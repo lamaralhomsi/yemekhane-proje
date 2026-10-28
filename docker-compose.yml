@@ -1,0 +1,100 @@
+services:
+  frontend:
+    build: ./apache
+    ports:
+      - "8083:80"
+    volumes:
+      - ./frontend:/usr/local/apache2/htdocs/
+      - ./apache/yemekhane.conf:/usr/local/apache2/conf/extra/yemekhane.conf
+    depends_on:
+      - mysql-primary
+    networks:
+      - yemekhane_net
+
+  uygulama:
+    build: ./uygulama
+    container_name: yemekhane-uygulama-1
+    volumes:
+      - ./uygulama:/var/www/html
+    ports:
+      - "8084:80"
+    depends_on:
+      - mysql-primary
+      - mysql-replica
+      - redis
+    networks:
+      - yemekhane_net
+
+  mysql-primary:
+    image: mysql:8.0
+    container_name: yemekhane-mysql-primary-1
+    command:
+      - "--server-id=1"
+      - "--log-bin=mysql-bin"
+      - "--gtid-mode=ON"
+      - "--enforce-gtid-consistency=ON"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: yemekhane
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_primary_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      - yemekhane_net
+
+  mysql-replica:
+    image: mysql:8.0
+    container_name: yemekhane-mysql-replica-1
+    command:
+      - "--server-id=2"
+      - "--log-bin=mysql-bin"
+      - "--gtid-mode=ON"
+      - "--enforce-gtid-consistency=ON"
+      - "--relay-log=mysql-relay-bin"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_replica_data:/var/lib/mysql
+    depends_on:
+      - mysql-primary
+    networks:
+      - yemekhane_net
+
+  replica-setup:
+    image: mysql:8.0
+    container_name: yemekhane-replica-setup-1
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: yemekhane
+      REPL_USER: repl_user
+      REPL_PASSWORD: repl_password
+      MYSQL_USER: uygulama_user
+      MYSQL_PASSWORD: uygulama_password
+    volumes:
+      - ./db/replica-setup.sh:/replica-setup.sh
+    entrypoint: ["bash", "/replica-setup.sh"]
+    depends_on:
+      - mysql-primary
+      - mysql-replica
+    networks:
+      - yemekhane_net
+
+  redis:
+    image: redis:alpine
+    container_name: yemekhane-redis-1
+    ports:
+      - "6379:6379"
+    networks:
+      - yemekhane_net
+
+networks:
+  yemekhane_net:
+    driver: bridge
+
+volumes:
+  mysql_primary_data:
+  mysql_replica_data:
