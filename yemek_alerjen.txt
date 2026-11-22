@@ -1,0 +1,53 @@
+id	ad	alerjen
+1	Mercimek Çorbas?	sut,yumurta,gluten
+2	Ezogelin Çorbas?	sut,yumurta,gluten
+3	Tarhana Çorbas?	sut,yumurta,gluten
+4	Yayla Çorbas?	sut,yumurta,gluten
+5	Domates Çorbas?	sut,yumurta,gluten
+6	Sebze Çorbas?	sut,yumurta,gluten
+7	?ehriyeli Tavuk Çorbas?	sut,yumurta,gluten
+8	??kembe Çorbas?	sut,yumurta,gluten
+9	Etli Kuru Fasulye	sut,yumurta
+10	Tavuk Sote	sut,yumurta
+11	Izgara Köfte	sut,yumurta
+12	F?r?n Tavuk	sut,yumurta
+13	Etli Nohut	sut,yumurta
+14	Karn?yar?k	sut,yumurta
+15	Zeytinya?l? Taze Fasulye	sut,yumurta
+16	Mantar Sote	sut,yumurta
+17	F?r?nda Levrek	sut,yumurta
+18	Sebzeli Güveç	sut,yumurta
+19	Kayseri Mant?s?	sut,yumurta
+20	Tavuk ?i?	sut,yumurta
+21	Pirinç Pilav?	sut,yumurta,gluten
+22	Bulgur Pilav?	sut,yumurta,gluten
+23	?ehriyeli Pilav	sut,yumurta,gluten
+24	Domates Soslu Makarna	sut,yumurta,gluten
+25	F?r?n Makarna	sut,yumurta,gluten
+26	Su Böre?i	sut,yumurta
+27	Patates Püresi	sut,yumurta
+28	Mercimek Köftesi	sut,yumurta
+29	Çoban Salata	sut,yumurta
+30	Mevsim Salata	sut,yumurta
+31	Cac?k	sut,yumurta
+32	Haydari	sut,yumurta
+33	Rus Salatas?	sut,yumurta
+34	Piyaz	sut,yumurta
+35	Humus	sut,yumurta
+36	Sütlaç	sut,yumurta
+37	Kemalpa?a Tatl?s?	sut,yumurta
+38	F?st?kl? Baklava	sut,yumurta
+39	Revani	sut,yumurta
+40	A?ure	sut,yumurta
+41	Mevsim Meyvesi	sut,yumurta
+42	?rmik Helvas?	sut,yumurta
+43	Ha?lanm?? Yumurta	sut,yumurta
+44	Beyaz Peynir	sut,yumurta
+45	Ka?ar Peyniri	sut,yumurta
+46	Siyah Zeytin	sut,yumurta
+47	Bal ve Tereya??	sut,yumurta
+48	Menemen	sut,yumurta
+49	Simit	sut,yumurta,gluten
+50	Ayran	sut,yumurta
+51	Çay	sut,yumurta
+52	Meyve Suyu	sut,yumurta

@@ -1,0 +1,1 @@
+IF v_dolu  THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Kapasite dolu.'; END IF;
